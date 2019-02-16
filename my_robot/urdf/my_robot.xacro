@@ -162,8 +162,8 @@
     <origin xyz="0.22 -0.1 0.06" rpy="0.0 0.0 0.0"/>
     <parent link="chassis_base"/>
     <child link="side_wheel_right"/>
-    <axis xyz="1 0 0"/>
-    <limit effort="1000" velocity="1000"/>
+    <axis xyz="-1 0 0"/>
+    <limit effort="2000" velocity="2000"/>
     <dynamics damping="1.0" friction="1.0"/>
   </joint>
 
@@ -194,8 +194,8 @@
     <origin xyz="-0.22 -0.1 0.06" rpy="0.0 0.0 0.0"/>
     <parent link="chassis_base"/>
     <child link="side_wheel_left"/>
-    <axis xyz="1 0 0"/>
-    <limit effort="1000" velocity="1000"/>
+    <axis xyz="-1 0 0"/>
+    <limit effort="2000" velocity="2000"/>
     <dynamics damping="1.0" friction="1.0"/>
   </joint>
 
