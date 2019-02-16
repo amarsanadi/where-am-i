@@ -2,7 +2,14 @@
 
 <robot name="my_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-
+  <xacro:include filename="$(find my_robot)/urdf/my_robot.gazebo" />
+  
+  <link name="robot_footprint"></link>
+  <joint name="robot_footprint_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="robot_footprint"/>
+    <child link="chassis_base" />
+  </joint>
   <link name="chassis_base">
     <pose>0 0 0.1 0 0 0</pose>
     <inertial>
@@ -75,20 +82,20 @@
     <collision name="chassis_torso_collision">
       <origin xyz="0 0 0.0" rpy=" 0 0 0"/> 
       <geometry>
-        <box size="0.35 0.25 0.3"/>
+        <box size="0.33 0.22 0.25"/>
       </geometry>
     </collision>
 
     <visual name="chassis_torso_visual">
       <origin xyz="0 0 0.0" rpy=" 0 0 0"/>
       <geometry>
-        <box size="0.35 0.25 0.3"/>
+        <box size="0.33 0.22 0.25"/>
       </geometry>
     </visual>
   </link>
 
   <joint name="torso_to_base" type="fixed">
-    <origin xyz="0.0 0.0 0.35" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.0 0.0 0.30" rpy="0.0 0.0 0.0"/>
     <parent link="chassis_base"/>
     <child link="chassis_torso"/>
   </joint>
@@ -208,23 +215,23 @@
   <visual name="head_visual">
     <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     <geometry>
-      <box size="0.35 0.25 0.2"/>
+      <box size="0.23 0.15 0.2"/>
     </geometry>
   </visual>
   <collision>
     <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     <geometry>
-      <box size="0.35 0.25 0.2"/>
+      <box size="0.23 0.15 0.2"/>
     </geometry>
   </collision>
 </link>
 
-<joint name="neck_joint" type="revolute">
-  <origin xyz="0.0 0.0 0.251" rpy="0.0 0.0 0.0"/>
+<joint name="neck_joint" type="continuous">
+  <origin xyz="0.0 0.0 0.201" rpy="0.0 0.0 0.0"/>
   <parent link="chassis_torso"/>
   <child link="head"/>
   <axis xyz="0 0 1"/>
-  <limit lower="-1.5707" upper="1.5707" effort="50.0" velocity="00.0"/>
+  <limit effort="100" velocity="100"/>
   <dynamics damping="1.0" friction="1.0"/>
 </joint>
   
@@ -249,11 +256,11 @@
   </collision>
 </link>
 
-<joint name="camera_head" type="fixed">
-  <origin xyz="0.0 0.125 0.0" rpy="0.0 0.0 0.0"/>
+<joint name="camera_head_joint" type="fixed">
+  <origin xyz="0.0 0.08 0.0" rpy="0.0 0.393 1.5707"/>
   <parent link="head"/>
   <child link="camera"/>
-  <axis xyz="0.0 1 0.0"/>
+  <axis xyz="0 0 0.0"/>
   <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
 </joint>
 
@@ -265,7 +272,7 @@
   </inertial>
 
   <visual name="hokuyo_visual">
-    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 -1.5707"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     <geometry>
       <mesh filename="package://my_robot/meshes/hokuyo.dae"/>
     </geometry>
@@ -281,7 +288,7 @@
 </link>
 
 <joint name="hokuyo_joint" type="fixed">
-  <origin xyz="0.0 0.0 0.13" rpy="0.0 0.0 0.0"/>
+  <origin xyz="0.0 0.04 0.13" rpy="0.0 0.0 1.5707"/>
   <parent link="head"/>
   <child link="hokuyo"/>
   <axis xyz="0.0 1 0.0"/>
