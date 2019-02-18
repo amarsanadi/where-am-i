@@ -37,7 +37,7 @@
     </visual>
   </link>
 
-  <link name="castor_block">
+  <link name="castor_block_front">
     <inertial>
       <mass value="2.5"/>
       <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
@@ -46,14 +46,14 @@
                     iyy="0.01" iyz="0"
                               izz="0.01"/>
     </inertial>
-    <collision name="castor_block_collision">
+    <collision name="castor_block_front_collision">
       <origin xyz="0 0 0" rpy=" 0 0 0"/> 
       <geometry>
         <box size="0.08 0.15 .1"/>
       </geometry>
     </collision>
 
-    <visual name="castor_block_visual">
+    <visual name="castor_block_front_visual">
       <origin xyz="0 0 0" rpy=" 0 0 0"/>
       <geometry>
         <box size="0.08 0.15 .1"/>
@@ -61,12 +61,43 @@
     </visual>
   </link>
 
-  <joint name="chassis_to_castor_block_joint" type="fixed">
+  <joint name="chassis_to_castor_block_front_joint" type="fixed">
     <origin xyz="0.0 0.21 0.05" rpy="0.0 0.0 0.0"/>
     <parent link="chassis_base"/>
-    <child link="castor_block"/>
+    <child link="castor_block_front"/>
   </joint>
-  
+
+  <link name="castor_block_back">
+    <inertial>
+      <mass value="2.5"/>
+      <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+      <inertia
+          ixx="0.01" ixy="0"   ixz="0"
+                    iyy="0.01" iyz="0"
+                              izz="0.01"/>
+    </inertial>
+    <collision name="castor_block_back_collision">
+      <origin xyz="0 0 0" rpy=" 0 0 0"/> 
+      <geometry>
+        <box size="0.08 0.15 .1"/>
+      </geometry>
+    </collision>
+
+    <visual name="castor_block_back_visual">
+      <origin xyz="0 0 0" rpy=" 0 0 0"/>
+      <geometry>
+        <box size="0.08 0.15 .1"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="chassis_to_castor_block_back_joint" type="fixed">
+    <origin xyz="0.0 -0.21 0.05" rpy="0.0 0.0 0.0"/>
+    <parent link="chassis_base"/>
+    <child link="castor_block_back"/>
+  </joint>
+
+
   <link name="chassis_torso">
     <inertial>
       <mass value="1.0"/>
@@ -97,7 +128,7 @@
     <child link="chassis_torso"/>
   </joint>
 
-  <link name="castor">
+  <link name="castor_front">
     <inertial>
       <mass value="0.05"/>
       <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
@@ -107,14 +138,14 @@
                               izz="0.1"
       />
     </inertial>
-    <visual name="caster_visual">
+    <visual name="caster_front_visual">
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
     </visual>
 
-    <collision name="caster_collision">
+    <collision name="caster_front_collision">
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
         <sphere radius="0.05"/>
@@ -123,11 +154,44 @@
 
   </link>
 
-  <joint name="castor_to_castor_block" type="fixed">
-    <origin xyz="0.0 0.0 -0.085" rpy="0.0 0.0 0.0"/>
-    <parent link="castor_block"/>
-    <child link="castor"/>
+  <joint name="castor_to_castor_block_front" type="fixed">
+    <origin xyz="0.0 0.0 -0.09" rpy="0.0 0.0 0.0"/>
+    <parent link="castor_block_front"/>
+    <child link="castor_front"/>
   </joint>
+
+  <link name="castor_back">
+    <inertial>
+      <mass value="0.05"/>
+      <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
+      <inertia
+          ixx="0.1" ixy="0"   ixz="0"
+                    iyy="0.1" iyz="0"
+                              izz="0.1"
+      />
+    </inertial>
+    <visual name="caster_back_visual">
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+    </visual>
+
+    <collision name="caster_back_collision">
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+    </collision>
+
+  </link>
+
+  <joint name="castor_to_castor_block_back" type="fixed">
+    <origin xyz="0.0 0.0 -0.09" rpy="0.0 0.0 0.0"/>
+    <parent link="castor_block_back"/>
+    <child link="castor_back"/>
+  </joint>
+
 
   <link name="side_wheel_right">
     <inertial>
@@ -177,7 +241,7 @@
   </link>
 
   <joint name="right_wheel_hinge" type="continuous">
-    <origin xyz="0.22 -0.1 0.01" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.22 0.0 0.01" rpy="0.0 0.0 0.0"/>
     <parent link="chassis_base"/>
     <child link="side_wheel_right"/>
     <axis xyz="-1 0 0"/>
@@ -186,7 +250,7 @@
   </joint>
 
   <joint name="left_wheel_hinge" type="continuous">
-    <origin xyz="-0.22 -0.1 0.01" rpy="0.0 0.0 0.0"/>
+    <origin xyz="-0.22 0.0 0.01" rpy="0.0 0.0 0.0"/>
     <parent link="chassis_base"/>
     <child link="side_wheel_left"/>
     <axis xyz="-1 0 0"/>
@@ -301,7 +365,7 @@
   <material>Gazebo/Green</material>
 </gazebo>
 
-<gazebo reference="castor_block">
+<gazebo reference="castor_block_front">
   <material>Gazebo/Yellow</material>
 </gazebo>
 
