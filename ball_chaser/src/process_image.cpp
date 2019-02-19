@@ -53,7 +53,7 @@ void process_image_callback(const sensor_msgs::Image img)
     {
       ROS_INFO_STREAM("ball in the left 1/3");
       lin_x=0.1;
-      ang_z=0.1;
+      ang_z=1.5+0.01*(400-ball_x);
     } 
     else
       if(ball_x >= 266 && ball_x < 533)
@@ -61,9 +61,9 @@ void process_image_callback(const sensor_msgs::Image img)
         ROS_INFO_STREAM("ball in the middle section");
         lin_x=0.4;
         if(ball_x<400)
-          ang_z=0.05;
+          ang_z=0.05+0.01*(400-ball_x);
         else
-          ang_z=-0.05;
+          ang_z=-0.05-0.01*(ball_x-400);
         
       }
       else
@@ -71,7 +71,7 @@ void process_image_callback(const sensor_msgs::Image img)
         {
           ROS_INFO_STREAM("ball in the right section");
           lin_x=0.1;
-          ang_z=-0.1;
+          ang_z=-1.5-0.01*(ball_x-400);
         }
     drive_robot(lin_x, ang_z);
   } else drive_robot(0, -0.5);
