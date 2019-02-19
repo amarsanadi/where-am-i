@@ -282,13 +282,16 @@
   </collision>
 </link>
 
-<joint name="neck_joint" type="continuous">
+<!-- This is a fixed joint for now but I want to use this joint to make the head swivel in the future -->
+
+<joint name="neck_joint" type="fixed">
   <origin xyz="0.0 0.0 0.201" rpy="0.0 0.0 0.0"/>
   <parent link="chassis_torso"/>
   <child link="head"/>
   <axis xyz="0 0 1"/>
-  <limit effort="100" velocity="100"/>
-  <dynamics damping="1.0" friction="1.0"/>
+  <!--<limit effort="100" velocity="100"/>
+  <dynamics damping="1.0" friction="1.0"/>-->
+
 </joint>
   
 <link name="camera">
