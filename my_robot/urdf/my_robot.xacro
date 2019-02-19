@@ -258,9 +258,6 @@
     <dynamics damping="1.0" friction="1.0"/>
   </joint>
 
-  
-
-
 <link name="head">
   <inertial>
     <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
