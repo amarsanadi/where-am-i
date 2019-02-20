@@ -74,7 +74,7 @@ void process_image_callback(const sensor_msgs::Image img)
           ang_z=-0.01*(ball_x-400);
         }
     drive_robot(lin_x, ang_z);
-  } else drive_robot(0, -0.5);
+  } else drive_robot(0, -1.5);
 }
 
 int main(int argc, char** argv)
