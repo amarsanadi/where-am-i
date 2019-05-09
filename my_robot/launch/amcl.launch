@@ -15,9 +15,9 @@
 
     <param name="initial_pose_x" value="0.0"/>
     <param name="initial_pose_y" value="0.0"/>
-    <param name="initial_pose_a" value="-1.57"/>
-    <param name="min_particles" value="500"/>
-    <param name="max_particles" value="2000"/>
+    <param name="initial_pose_a" value="0.0"/>
+    <param name="min_particles" value="200"/>
+    <param name="max_particles" value="800"/>
     <param name="update_min_d" value="0.001"/>
     <param name="update_min_a" value="0.004"/>
     <param name="transform_tolerance" value="1.6"/>
