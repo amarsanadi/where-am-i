@@ -1,4 +1,4 @@
-image: /home/devadmin/workspace/where_am_i/src/my_robot/maps/map.pgm
+image: map.pgm
 resolution: 0.01
 width: 30
 height: 30

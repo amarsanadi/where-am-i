@@ -41,6 +41,10 @@
     <rosparam file="$(find my_robot)/config/local_costmap_params.yaml" command="load" />
     <rosparam file="$(find my_robot)/config/global_costmap_params.yaml" command="load" />
     <rosparam file="$(find my_robot)/config/base_local_planner_params.yaml" command="load" />
+<<<<<<< HEAD
   </node>
+=======
+  </node> -->
+>>>>>>> c7b02d990dd59a53b6b0e3aa22fde448303e4358
 
 </launch>
