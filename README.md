@@ -1,4 +1,4 @@
-# Prject: where-am-i
+# Project: where-am-i
 
 Localisation of a robot using the ROS AMCL package inside a static map in the Gazebo environment. 
 
