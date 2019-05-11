@@ -24,7 +24,7 @@ $ sudo apt-get install ros-kinetic-amcl
 ### Installing
 
 Create a folder in your workspace. 
-Clone the repository into a src direction and run catkin_make
+Clone the repository into a src directory and run catkin_make
 
 ```
 $ mkdir test_where_am_i
